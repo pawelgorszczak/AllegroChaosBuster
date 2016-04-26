@@ -1,0 +1,33 @@
+﻿<Window x:Name="Allegro_WebApiTest" x:Class="allegroWebApi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:allegroWebApi"
+        mc:Ignorable="d"        
+        Title="Allegro WebApi" Height="500" Width="1000" Background="Black" ResizeMode="CanMinimize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="400"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="900"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Height="100" Width="300" Grid.Row="0" Grid.Column="1" Source="C:\Users\Pentagon\documents\visual studio 2015\Projects\allegroWebApi\allegroWebApi\Images\logo.jpg" Margin="594,1,6,0" ></Image>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+            <Button Name="btnLogin" Content="Log in" Style="{StaticResource MenuButton}" Click="btnLogin_Click"></Button>
+            <Button Name="btnSoldItems" Content="Sold Items" Style="{StaticResource MenuButton}" Click="btnSoldItems_Click"></Button>
+            <Button Name="btnIncomingPayment" Content="Payments" Style="{StaticResource MenuButton}" Click="btnIncomingPayment_Click"></Button>
+            <Button Name="btnFeedbaks" Content="Feedbaks" Style="{StaticResource MenuButton}" Click="btnFeedbaks_Click"></Button>
+
+        </StackPanel>
+        <Grid Name ="Content" Grid.Row="1" Grid.Column="1" Margin="10,10,16,35" />
+    </Grid>
+
+
+</Window>
+
+    
