@@ -27,9 +27,9 @@ namespace allegroWebApi.UserControls
         public IncomingPayementsControl()
         {
             InitializeComponent();
-            //ShowSomeDateInDtg();
+            //UpdateMyincomingPayements();
         }
-        private void ShowSomeDateInDtg()
+        private void UpdateMyincomingPayements()
         {
             try
             {
@@ -37,26 +37,19 @@ namespace allegroWebApi.UserControls
                 key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("AllegroChaosBuster", true);
                 sessionHandler = (string)key.GetValue("sessionHandle");
                 Class.MyIncomingPayments.GetMyIncomingPayments getMyIncomingPayments = new Class.MyIncomingPayments.GetMyIncomingPayments(sessionHandler);
-                
-                         
-                Class.MyIncomingPayments.DataBaseOperations dataBaseOperations = new Class.MyIncomingPayments.DataBaseOperations();
-                //dataBaseOperations.ConnectionOpen();
-                dataBaseOperations.SaveDataToDataBase(getMyIncomingPayments.ReturnMyIncomingPayementStruct());
-                //dataBaseOperations.ConnectionClose();               
             }
             catch(SoapException e)
             {
                 MessageBox.Show(e.ToString());
             }
-        }
-
+        }        
         private void btnShowData_Click(object sender, RoutedEventArgs e)
         {
             ShowSoldItemsFromCategoryEqualedNull();
         }
         private void ShowSoldItemsFromCategoryEqualedNull()
         {
-            Class.MyIncomingPayments.DataBaseOperations dataBaseOperations = new Class.MyIncomingPayments.DataBaseOperations();
+            /*Class.MyIncomingPayments.DataBaseOperations dataBaseOperations = new Class.MyIncomingPayments.DataBaseOperations();
             
             AllegroChaosBusterDBContext myDB = new AllegroChaosBusterDBContext();
             
@@ -67,8 +60,13 @@ namespace allegroWebApi.UserControls
             {
                 i++;
             }
-            MessageBox.Show(i.ToString());
-
+            MessageBox.Show(i.ToString());    */
+            dtgMyInconigPayments.Items.Add(new
+            {
+                TransactionID = 560201100,
+                ItemTitle = "KARUZELA Z CYRKONIAMI 300 SZT OZDOBY CYRKONIE",
+                                
+            });
             
         }
     }
