@@ -49,25 +49,45 @@ namespace allegroWebApi.UserControls
         }
         private void ShowSoldItemsFromCategoryEqualedNull()
         {
-            /*Class.MyIncomingPayments.DataBaseOperations dataBaseOperations = new Class.MyIncomingPayments.DataBaseOperations();
+            Class.MyIncomingPayments.DataBaseOperations dataBaseOperations = new Class.MyIncomingPayments.DataBaseOperations();
             
             AllegroChaosBusterDBContext myDB = new AllegroChaosBusterDBContext();
             
             int i = 0;
             var cos4 = dataBaseOperations.GetDataFromDataBase();
-            var cos5 = dataBaseOperations.GetDataFromDataBaseWithDeclaredCategory("");
-            foreach (var myInc in cos5)
+
+            var dtg = new DataGrid();
+            var dtc = new DataGridTextColumn();
+            //MessageBox.Show(dataBaseOperations.GetPayTransDetailsForSpecyfiedID(item.PayTransID).ToList()[0]);
+            foreach (var item in cos4)
             {
-                i++;
+                if(item.ItemID == 0)
+                {
+                    dtgMyInconigPayments.Items.Add(new {
+                        TransactionID = item.PayTransID,
+                        ItemTitle = "Title is not avaliable",
+                        BuyerNickName = "NULL",
+                        ItemId = item.ItemID,
+                        PaymentStatus = item.PayTransType
+                    });
+                }
+                else
+                {
+                    dtgMyInconigPayments.Items.Add(new {
+                        TransactionID = item.PayTransID,
+                        ItemTitle = "Title is not avaliable",
+                        BuyerNickName = "NULL",
+                        itm = dataBaseOperations.GetPayTransDetailsForSpecyfiedID(item.PayTransID).ToList()
+                    });
+                }
+                        
             }
-            MessageBox.Show(i.ToString());    */
-            dtgMyInconigPayments.Items.Add(new
-            {
-                TransactionID = 560201100,
-                ItemTitle = "KARUZELA Z CYRKONIAMI 300 SZT OZDOBY CYRKONIE",
-                                
-            });
+            //dtTemplate.Resources.Add(new TextBlock { Text = "daawdawd" }, null);
+            //dtg.Items.Add(dtTemplate);
             
+            //dtgMyInconigPayments.Items.Add(dtg);
+            
+
         }
     }
 }

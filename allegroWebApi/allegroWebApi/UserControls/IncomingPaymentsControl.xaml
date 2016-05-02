@@ -13,45 +13,60 @@
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Button Name="btnShowData" Content="Sold Items" Height="19" Width="100" Grid.Row="0" Style="{StaticResource MenuButton}" Click="btnShowData_Click"></Button>
-        <DataGrid Name="dtgMyInconigPayments" Height="280" Width="800" AutoGenerateColumns="False" Grid.Row="2" Margin="10,10,10,0" RowBackground="White" AlternatingRowBackground="Gainsboro"  AlternationCount="2">
+        <DataGrid HeadersVisibility="None" Name="dtgMyInconigPayments" Height="280" Width="800" AutoGenerateColumns="False" Grid.Row="2" Margin="10,10,10,0" RowBackground="White" AlternatingRowBackground="Gainsboro"  AlternationCount="2">
             <DataGrid.Columns>
-                <!--First column, contains TransactionID-->
+                
+                <!--First column, contains checkbox-->
+                <DataGridCheckBoxColumn></DataGridCheckBoxColumn>
+                
+                <!--Second column, contains TransactionID-->
                 <DataGridTemplateColumn IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <StackPanel Margin="10">
                                 <TextBlock Text="{Binding TransactionID}"></TextBlock>
-                            </Grid>
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>                        
-                </DataGridTemplateColumn>
-
-                <!--Second column, contains all sold items from transactionID-->
-                <DataGridTemplateColumn IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DataGrid Name="dtgInDtg">
-                                <Grid>
-                                    <TextBlock Text="{Binding ItemTitle}"></TextBlock>
-                                    <TextBlock Text="{Binding ItemID}"></TextBlock>
-                                    <TextBlock Text="{Binding PaymentStatus}"></TextBlock>
-                                </Grid>
-                            </DataGrid>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
                 <!--Third column, contains buyer's detail, nick name, surname-->
                 <DataGridTemplateColumn IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <TextBox Text="{Binding BuyerNickName}"></TextBox>
-                                <TextBox Text="{Binding NameAndSurname}"></TextBox>
-                            </Grid>
+                            <StackPanel Margin="10">
+                                <TextBlock Text="{Binding BuyerNickName}"></TextBlock>
+                                <TextBlock Text="{Binding NameAndSurname}"></TextBlock>
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+
+                <!--First column in dtg inside dtg, contains sold item name, id and payement status-->
+                <DataGridTemplateColumn IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding ItemTitle}"></TextBlock>
+                                <TextBlock Text="{Binding ItemID}"></TextBlock>
+                                <TextBlock Text="{Binding PaymentStatus}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--Forth column, contains datagrid with important data-->
+                <DataGridTemplateColumn IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!--Datagrid inside data grid-->
+                            <DataGrid ItemsSource="{Binding itm}"></DataGrid>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
 
             </DataGrid.Columns> 
         </DataGrid>

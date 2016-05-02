@@ -107,7 +107,7 @@ namespace allegroWebApi.Class.MyIncomingPayments
             //     with table CathegoryOfMyIncomingPaymentsTables by a foreignKey value 
 
             AllegroChaosBusterDBContext myDB = new AllegroChaosBusterDBContext();
-            return 
+            return
                 (
                 from m in myDB.MyIncomingPaymentsTables
                 join c in myDB.CategoryOfMyIncomingPaymentsTables
@@ -124,7 +124,7 @@ namespace allegroWebApi.Class.MyIncomingPayments
             //     This function returns all MyIncomingPayementsTables which are connected
             //     with table CathegoryOfMyIncomingPaymentsTables by a foreignKey value = inserted category
             AllegroChaosBusterDBContext myDB = new AllegroChaosBusterDBContext();
-            return 
+            return
                 (
                 from m in myDB.MyIncomingPaymentsTables
                 join c in myDB.CategoryOfMyIncomingPaymentsTables
@@ -132,6 +132,16 @@ namespace allegroWebApi.Class.MyIncomingPayments
                 from c in mc
                 where c.Category == category
                 select m
+                );
+        }
+        public IEnumerable<PayTransDatailsTable> GetPayTransDetailsForSpecyfiedID(long payTransId)
+        {
+            AllegroChaosBusterDBContext myDB = new AllegroChaosBusterDBContext();
+            return
+                (
+                from p in myDB.PayTransDatailsTables
+                where p.payTransID == payTransId
+                select p
                 );
         }
     }
